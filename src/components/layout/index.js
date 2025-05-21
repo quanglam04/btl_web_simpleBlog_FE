@@ -10,7 +10,7 @@ import PostLists from "../pages/PostLists";
 import Login from "../pages/Login";
 import Stats from "../pages/Stats";
 import NewPost from "../pages/NewPost";
-import ProtectedRoute from "../protected-routes";
+import ProtectedRoute from "../ProtectedRoute";
 
 export default function AppLayout() {
   const [user, setUser] = useState(null);
