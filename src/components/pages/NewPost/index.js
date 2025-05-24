@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 function NewPost() {
   const [newPost, setNewPost] = useState("");
@@ -39,12 +39,14 @@ function NewPost() {
         <input type="text" {...register("slug", { required: true })} />
         <br />
         {errors.slug && <div style={{ color: "red" }}>Slug is required</div>}
+        <div style={{ height: "15px" }}></div>
 
         <span>Title:</span>
         <br />
         <input type="text" {...register("title", { required: true })} />
         <br />
         {errors.title && <div style={{ color: "red" }}>Title is required</div>}
+        <div style={{ height: "15px" }}></div>
 
         <span>Author:</span>
         <br />
@@ -53,6 +55,7 @@ function NewPost() {
         {errors.author && (
           <div style={{ color: "red" }}>Author is required</div>
         )}
+        <div style={{ height: "15px" }}></div>
 
         <span>Description:</span>
         <br />
@@ -61,7 +64,6 @@ function NewPost() {
         {errors.description && (
           <div style={{ color: "red" }}>Description is required</div>
         )}
-
         <br />
         <button type="submit">Add New</button>
         <p className="text-success">{newPost}</p>

@@ -26,33 +26,33 @@ export default function AppLayout() {
       <nav
         style={{
           margin: 10,
-          fontSize: 20,
+          fontSize: 30,
           justifyContent: "center",
           display: "flex",
         }}
       >
-        <Link to="/" style={{ padding: 5 }}>
+        <Link to="/" style={{ padding: 5, textDecoration: "none" }}>
           Home
         </Link>
-        <Link to="/posts" style={{ padding: 5 }}>
+        <Link to="/posts" style={{ padding: 5, textDecoration: "none" }}>
           Posts
         </Link>
-        <Link to="/about" style={{ padding: 5 }}>
+        <Link to="/about" style={{ padding: 5, textDecoration: "none" }}>
           About
         </Link>
         <span> | </span>
         {user && (
-          <Link to="/stats" style={{ padding: 5 }}>
+          <Link to="/stats" style={{ padding: 5, textDecoration: "none" }}>
             Stats
           </Link>
         )}
         {user && (
-          <Link to="/newpost" style={{ padding: 5 }}>
+          <Link to="/newpost" style={{ padding: 5, textDecoration: "none" }}>
             New Post
           </Link>
         )}
         {!user && (
-          <Link to="/login" style={{ padding: 5 }}>
+          <Link to="/login" style={{ padding: 5, textDecoration: "none" }}>
             Login
           </Link>
         )}

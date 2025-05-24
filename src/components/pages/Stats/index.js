@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 function Stats() {
   return (
     <div style={{ padding: 20, fontSize: 20 }}>

@@ -1,9 +1,7 @@
-import React from "react";
 import useLoginHook from "./useLoginHook";
 
 function Login(props) {
   const { setUser } = props;
-
   const { creds, error, handleLogin, setCreds } = useLoginHook();
 
   return (
@@ -11,7 +9,7 @@ function Login(props) {
       style={{
         padding: 10,
         fontSize: 20,
-        marginLeft: "41%",
+        marginLeft: "40%",
       }}
     >
       <br />
@@ -22,6 +20,7 @@ function Login(props) {
         onChange={(e) => setCreds({ ...creds, username: e.target.value })}
       />
       <br />
+      <div style={{ height: "20px" }}></div>
       <span>Password:</span>
       <br />
       <input
@@ -37,7 +36,7 @@ function Login(props) {
       >
         Login
       </button>
-      <p>{error}</p>
+      <p className="error">{error}</p>
     </div>
   );
 }
