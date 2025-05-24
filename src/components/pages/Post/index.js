@@ -43,15 +43,18 @@ export default function Post(props) {
   const { title, description, author } = post;
   return (
     <>
-      <div style={{ padding: "10px" }}>
+      <div style={{ fontSize: "20px", padding: "10px" }}>
         <div>
-          <span style={{ color: "red" }}> Title: </span> {title}
+          <span style={{ fontSize: "20px", color: "red" }}> Title: </span>
+          {title}
         </div>
         <div>
-          <span style={{ color: "red" }}> Description: </span> {description}
+          <span style={{ fontSize: "20px", color: "red" }}> Description: </span>
+          {description}
         </div>
         <div>
-          <span style={{ color: "red" }}> Author: </span> {author}
+          <span style={{ fontSize: "20px", color: "red" }}> Author: </span>
+          {author}
         </div>
       </div>
       <div style={{ paddingLeft: "10px" }}>
