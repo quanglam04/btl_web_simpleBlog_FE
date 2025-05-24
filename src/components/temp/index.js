@@ -60,10 +60,10 @@ export default function AppLayout() {
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts />}>
           <Route index element={<PostLists />} />
-          <Route path=":slug" element={<Post />} />
+          <Route path=":slug" element={<Post user={user} />} />
         </Route>
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login onLogin={setUser} />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route
           path="/stats"
           element={

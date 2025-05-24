@@ -1,33 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import useLoginHook from "./useLoginHook";
 
-function Login({ onLogin }) {
-  const [creds, setCreds] = useState({});
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+function Login(props) {
+  const { setUser } = props;
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("https://rmgxps-8080.csb.app/api/login", {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(creds),
-      });
-
-      if (response.ok) {
-        onLogin && onLogin({ username: creds.username });
-        navigate("/stats");
-      } else {
-        setError("Invalid username or password!");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setError("Login failed!");
-    }
-  };
+  const { creds, error, handleLogin, setCreds } = useLoginHook();
 
   return (
     <div style={{ padding: 10 }}>
@@ -47,7 +24,13 @@ function Login({ onLogin }) {
       />
       <br />
       <br />
-      <button onClick={handleLogin}>Login</button>
+      <button
+        onClick={() => {
+          handleLogin(setUser);
+        }}
+      >
+        Login
+      </button>
       <p>{error}</p>
     </div>
   );

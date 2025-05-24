@@ -1,87 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import usePostHook from "./usePostHook";
 
-export default function Post() {
+export default function Post(props) {
+  const { user } = props;
   const { slug } = useParams();
-  const navigate = useNavigate();
-  const [post, setPost] = useState("");
   const [openFormUpdate, setOpenFormUpdate] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const handleDeletePost = async () => {
-    // call API xóa
-
-    try {
-      const response = await fetch(
-        "https://rmgxps-8080.csb.app/api/delete/post/" + slug,
-        {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      alert("Xóa thành công bài viết với slug: ", slug);
-    } catch (error) {
-      console.error("Xóa thất bại:", error);
-    }
-
-    navigate("/posts");
-  };
+  const { handleDeletePost, fetchData, post } = usePostHook();
 
   const onSubmit = async (data) => {
-    //Call API
+    const post = JSON.stringify(data);
     try {
       const response = await fetch(
-        "https://rmgxps-8080.csb.app/api/update/post/" + slug,
+        "http://localhost:8080/api/post/update/" + slug,
         {
           method: "post",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: post,
         }
       );
-      const result = await response.json();
-      setPost(result);
-      alert("Cập nhật thành công bài viết với slug: ", slug);
+      if (response.ok) {
+        alert("Cập nhật thành công bài viết với slug: ", slug);
+      }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Cập nhật thất bại:", error);
     }
+    fetchData(slug);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://rmgxps-8080.csb.app/api/post/" + slug
-        );
-        const result = await response.json();
-        setPost(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [post]);
-  const { title, description } = post;
+    fetchData(slug);
+  }, []);
+  const { title, description, author } = post;
   return (
     <>
       <div style={{ padding: "10px" }}>
         <div>
-          {" "}
-          <span style={{ color: "red" }}> Title: </span> {title}{" "}
+          <span style={{ color: "red" }}> Title: </span> {title}
         </div>
         <div>
-          {" "}
-          <span style={{ color: "red" }}> Description: </span> {description}{" "}
+          <span style={{ color: "red" }}> Description: </span> {description}
+        </div>
+        <div>
+          <span style={{ color: "red" }}> Author: </span> {author}
         </div>
       </div>
       <div style={{ paddingLeft: "10px" }}>
@@ -91,7 +61,7 @@ export default function Post() {
           }}
         >
           Cập nhật bài viết
-        </button>{" "}
+        </button>
       </div>
       {openFormUpdate && (
         <>
@@ -134,15 +104,19 @@ export default function Post() {
               }}
             >
               Nhấn để đóng form cập nhật
-            </button>{" "}
+            </button>
           </div>
         </>
       )}
 
       <div style={{ padding: "10px" }}>
-        <button onClick={handleDeletePost} style={{ color: "red" }}>
-          {" "}
-          Xóa bài viết{" "}
+        <button
+          onClick={() => {
+            handleDeletePost(slug);
+          }}
+          style={{ color: "red" }}
+        >
+          Xóa bài viết
         </button>
       </div>
     </>
