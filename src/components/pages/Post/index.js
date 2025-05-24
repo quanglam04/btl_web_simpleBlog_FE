@@ -90,6 +90,18 @@ export default function Post(props) {
               {errors.description && (
                 <div style={{ color: "red" }}>description is required</div>
               )}
+
+              <br />
+              <span>Author:</span>
+              <br />
+              <input
+                disabled
+                type="text"
+                {...register("author", { required: true })}
+              />
+              {errors.author && (
+                <div style={{ color: "red" }}>Author is required</div>
+              )}
             </div>
 
             <div style={{ padding: "10px" }}>
