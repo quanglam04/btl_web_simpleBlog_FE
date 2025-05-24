@@ -7,7 +7,13 @@ function Login(props) {
   const { creds, error, handleLogin, setCreds } = useLoginHook();
 
   return (
-    <div style={{ padding: 10 }}>
+    <div
+      style={{
+        padding: 10,
+        fontSize: 20,
+        marginLeft: "41%",
+      }}
+    >
       <br />
       <span>Username:</span>
       <br />

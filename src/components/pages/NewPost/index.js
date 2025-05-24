@@ -32,7 +32,7 @@ function NewPost() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div style={{ padding: 10 }}>
+      <div style={{ padding: 10, fontSize: 20, marginLeft: "41%" }}>
         <br />
         <span>Slug:</span>
         <br />

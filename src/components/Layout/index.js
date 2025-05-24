@@ -23,7 +23,14 @@ export default function AppLayout() {
 
   return (
     <>
-      <nav style={{ margin: 10 }}>
+      <nav
+        style={{
+          margin: 10,
+          fontSize: 20,
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
         <Link to="/" style={{ padding: 5 }}>
           Home
         </Link>

@@ -45,20 +45,21 @@ export default function Post(props) {
     <>
       <div style={{ fontSize: "20px", padding: "10px" }}>
         <div>
-          <span style={{ fontSize: "20px", color: "red" }}> Title: </span>
+          <span style={{ color: "red" }}> Title: </span>
           {title}
         </div>
         <div>
-          <span style={{ fontSize: "20px", color: "red" }}> Description: </span>
+          <span style={{ color: "red" }}> Description: </span>
           {description}
         </div>
         <div>
-          <span style={{ fontSize: "20px", color: "red" }}> Author: </span>
+          <span style={{ color: "red" }}> Author: </span>
           {author}
         </div>
       </div>
       <div style={{ paddingLeft: "10px" }}>
         <button
+          style={{ fontSize: "20px" }}
           onClick={() => {
             setOpenFormUpdate(true);
           }}
@@ -69,7 +70,7 @@ export default function Post(props) {
       {openFormUpdate && (
         <>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div style={{ padding: "10px" }}>
+            <div style={{ padding: "10px", fontSize: "20px" }}>
               <br />
               <span>Slug:</span>
               <br />
@@ -100,6 +101,7 @@ export default function Post(props) {
               <input
                 disabled
                 type="text"
+                value={author}
                 {...register("author", { required: true })}
               />
               {errors.author && (
@@ -108,12 +110,13 @@ export default function Post(props) {
             </div>
 
             <div style={{ padding: "10px" }}>
-              <button> Nhấn để cập nhật </button>
+              <button style={{ fontSize: "20px" }}> Nhấn để cập nhật </button>
             </div>
           </form>
 
           <div style={{ paddingLeft: "10px" }}>
             <button
+              style={{ fontSize: "20px" }}
               onClick={() => {
                 setOpenFormUpdate(false);
               }}
@@ -129,7 +132,7 @@ export default function Post(props) {
           onClick={() => {
             handleDeletePost(slug);
           }}
-          style={{ color: "red" }}
+          style={{ color: "red", fontSize: "20px" }}
         >
           Xóa bài viết
         </button>

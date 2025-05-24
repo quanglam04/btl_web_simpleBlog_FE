@@ -9,7 +9,7 @@ export default function PostLists() {
   }, []);
 
   return (
-    <ul>
+    <ul style={{ fontSize: "20px" }}>
       {data.map((d) => (
         <li key={d.slug}>
           <Link to={`/posts/${d.slug}`}>
