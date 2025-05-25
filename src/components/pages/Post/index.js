@@ -29,7 +29,7 @@ export default function Post(props) {
         }
       );
       if (response.ok) {
-        alert("Cập nhật thành công bài viết với slug: ", slug);
+        alert(`Cập nhật thành công bài viết với slug: ${slug}`);
       }
     } catch (error) {
       console.error("Cập nhật thất bại:", error);

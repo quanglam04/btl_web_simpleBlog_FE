@@ -13,7 +13,7 @@ const usePostHook = () => {
           "Content-Type": "application/json",
         },
       });
-      alert("Xóa thành công bài viết với slug: ", slug);
+      alert(`Xóa thành công bài viết với slug: ${slug}`);
     } catch (error) {
       console.error("Xóa thất bại:", error);
     }
