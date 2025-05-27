@@ -19,7 +19,8 @@ const useLoginHook = () => {
 
       if (response.ok) {
         alert("Login successful!");
-        setUser({ username: creds.username });
+        const result = await response.json();
+        setUser(result);
         navigate("/stats");
       } else {
         setError("Invalid username or password!");
